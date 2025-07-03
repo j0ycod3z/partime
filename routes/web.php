@@ -6,33 +6,20 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
+| These routes return frontend views or static test data for display.
 */
 
-Route::get('/', fn() => view('auth.login'))->name('login');
+Route::get('/', fn () => view('auth.login'))->name('login');
 Route::view('/register', 'auth.register')->name('register');
-// Route::view('/users', 'dashboard.users')->name('users');
-Route::view('/kits', 'dashboard.kits')->name('kits');
 Route::view('/settings', 'dashboard.settings')->name('settings');
 Route::view('/dashboard', 'dashboard.index')->name('dashboard');
 
-Route::post('/login', function () {
-    return redirect()->route('dashboard');
-});
+// Fake login/redirect logic for demonstration
+Route::post('/login', fn () => redirect()->route('dashboard'));
+Route::post('/users', fn () => redirect()->route('users'))->name('users.store');
+Route::put('/users/{id}', fn ($id) => redirect()->route('users')->with('success', 'User updated (fake).'))->name('users.update');
 
-Route::post('/users', function () {
-    return redirect()->route('users');
-})->name('users.store');
-
-Route::put('/users/{id}', function ($id) {
-    return redirect()->route('users')->with('success', 'User updated (fake).');
-})->name('users.update');
-
-
+// Mock user list for dashboard view (testing)
 Route::view('/users', 'dashboard.users', [
     'users' => [
         (object) [
@@ -62,6 +49,7 @@ Route::view('/users', 'dashboard.users', [
     ]
 ])->name('users');
 
+// Mock kit and results display for testing purposes
 Route::get('/kits', function () {
     $registeredKits = [
         [

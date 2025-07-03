@@ -13,7 +13,8 @@ class TrumeLabsService
     public function __construct()
     {
         $this->baseUrl = config('services.trumelabs.base_url');
-        $this->apiKey = config('services.trumelabs.api_key');
+        $this->apiKey  = config('services.trumelabs.api_key');  // Bearer Token
+        $this->appKey  = config('services.trumelabs.app_key');  // "App-Key" header
     }
 
     protected function request($method, $endpoint, $data = [], $query = [])
