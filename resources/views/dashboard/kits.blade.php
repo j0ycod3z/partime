@@ -40,9 +40,10 @@
                 <div class="flex items-center justify-between mb-4">
                     <h2 class="text-xl font-semibold text-gray-800">Unregistered Kits</h2>
                 </div>
-                <div class="bg-white rounded-xl shadow p-4 space-y-2 h-full overflow-y-auto">
+                <div class="bg-white rounded-xl shadow p-4 space-y-2 h-full overflow-y-auto border border-gray-200">
                     @foreach ($unregisteredKits as $kit)
-                        <div class="px-4 py-2 bg-gray-50 border rounded-xl flex justify-between items-center gap-4">
+                        <div
+                            class="px-4 py-2 bg-gray-50 border border-gray-300 rounded-xl flex justify-between items-center gap-4">
                             <span class="truncate max-w-[60%] text-gray-700">{{ $kit }}</span>
                             <div class="flex-shrink-0">
                                 @include('components.modals.assign-kit', ['kit' => $kit])

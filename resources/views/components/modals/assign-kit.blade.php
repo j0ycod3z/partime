@@ -1,6 +1,6 @@
 <div x-data="{ open: false, hover: false }" @mouseenter="hover = true" @mouseleave="hover = false">
     <button @click="open = true"
-        class="inline-flex items-center bg-gray-600 hover:bg-gray-800 hover:delay-150 duration-300 hover:duration-300 text-white rounded-full cursor-pointer px-3 py-2 overflow-hidden">
+        class="inline-flex items-center bg-gray-600 hover:bg-gray-800 hover:shadow-lg hover:delay-150 duration-300 hover:duration-300 text-white rounded-full cursor-pointer px-3 py-2 overflow-hidden">
         <x-heroicon-o-tag class="w-2 h-2" />
         <span class="ml-2 transition-all duration-300 ease-in-out text-xs">
             Assign
