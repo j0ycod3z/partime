@@ -32,17 +32,6 @@
                         </td>
                     </tr>
                 @endforeach
-
-
-                {{-- @foreach ($users as $user)
-                    <tr>
-                        <td>{{ $user['first_name'] }} {{ $user['last_name'] }}</td>
-                        <td>
-                            @include('dashboard.view-user', ['user' => $user])
-                        </td>
-                    </tr>
-                @endforeach --}}
-
             </tbody>
         </table>
     </div>
