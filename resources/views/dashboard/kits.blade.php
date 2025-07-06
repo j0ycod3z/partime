@@ -7,7 +7,7 @@
             <div class="flex items-center justify-between flex-shrink-0 py-4">
                 <h2 class="text-xl font-semibold text-gray-800">Registered Kits</h2>
             </div>
-            <div class="flex-1 overflow-y-auto bg-white shadow rounded-lg py-4">
+            <div class="flex-1 overflow-y-auto bg-white shadow rounded-lg">
                 <table class="min-w-full divide-y divide-gray-200 text-sm text-gray-800">
                     <thead class="bg-gray-100 sticky top-0 z-10">
                         <tr>
