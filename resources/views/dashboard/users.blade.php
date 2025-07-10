@@ -5,7 +5,9 @@
         <!-- Header -->
         <div class="flex items-center justify-between mb-6 flex-shrink-0">
             <h1 class="text-2xl font-bold text-gray-800">Users</h1>
-            @include('components.modals.create-user')
+            @if ($globalRole === 'admin')
+                @include('components.modals.create-user')
+            @endif
         </div>
 
         <!-- Scrollable Table Container -->
@@ -31,7 +33,10 @@
                             <td class="px-6 py-4">{{ $user->gender }}</td>
                             <td class="px-6 py-4 space-x-2 flex flex-row">
                                 @include('components.modals.view-user', ['user' => $user])
-                                @include('components.modals.edit-user', ['user' => $user])
+
+                                @if ($globalRole === 'admin')
+                                    @include('components.modals.edit-user', ['user' => $user])
+                                @endif
                             </td>
                         </tr>
                     @endforeach

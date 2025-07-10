@@ -19,13 +19,18 @@
                     <tbody class="divide-y divide-gray-200">
                         @foreach ($registeredKits as $kit)
                             <tr>
-                                <td class="px-6 py-4">{{ $kit['barcode'] }}</td>
+                                <td
+                                    class="px-6 py-4 max-w-[150px] truncate whitespace-nowrap overflow-hidden text-ellipsis">
+                                    {{ $kit['barcode'] }}
+                                </td>
                                 <td class="px-6 py-4">{{ $kit['user'] }}</td>
                                 <td class="px-6 py-4 space-x-2 flex flex-row items-center">
                                     @include('components.modals.user-results', [
                                         'results' => $results,
                                     ])
-                                    @include('components.modals.edit-kit', ['kit' => $kit])
+                                    @if ($globalRole === 'admin')
+                                        @include('components.modals.edit-kit', ['kit' => $kit])
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
@@ -34,25 +39,27 @@
             </div>
         </div>
 
-        <!-- Unregistered Kits Section -->
-        <div class="w-1/3 h-full">
-            <div class="w-full h-full flex flex-col p-4">
-                <div class="flex items-center justify-between mb-4">
-                    <h2 class="text-xl font-semibold text-gray-800">Unregistered Kits</h2>
-                </div>
-                <div class="bg-white rounded-xl shadow p-4 space-y-2 h-full overflow-y-auto border border-gray-200">
-                    @foreach ($unregisteredKits as $kit)
-                        <div
-                            class="px-4 py-2 bg-gray-50 border border-gray-300 rounded-xl flex justify-between items-center gap-4">
-                            <span class="truncate max-w-[60%] text-gray-700">{{ $kit }}</span>
-                            <div class="flex-shrink-0">
-                                @include('components.modals.assign-kit', ['kit' => $kit])
+        @if ($globalRole === 'admin')
+            <!-- Unregistered Kits Section -->
+            <div class="w-1/3 h-full">
+                <div class="w-full h-full flex flex-col p-4">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-semibold text-gray-800">Unregistered Kits</h2>
+                    </div>
+                    <div class="bg-white rounded-xl shadow p-4 space-y-2 h-full overflow-y-auto border border-gray-200">
+                        @foreach ($unregisteredKits as $kit)
+                            <div
+                                class="px-4 py-2 bg-gray-50 border border-gray-300 rounded-xl flex justify-between items-center gap-4">
+                                <span class="truncate max-w-[60%] text-gray-700">{{ $kit }}</span>
+                                <div class="flex-shrink-0">
+                                    @include('components.modals.assign-kit', ['kit' => $kit])
+                                </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
             </div>
-        </div>
+        @endif
 
     </div>
 @endsection

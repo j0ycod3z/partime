@@ -58,9 +58,8 @@
 
     </aside>
 
-
     {{-- Main content --}}
-    <main class="flex-1">
+    <main class="flex-1 h-screen">
         @yield('content')
     </main>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>

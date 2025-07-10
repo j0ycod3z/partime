@@ -82,114 +82,6 @@ Route::view('/users', 'dashboard.users', [
             'country' => 'Canada',
             'ethnicity' => 'Asian'
         ],
-        (object) [
-            'id' => 36423218313201,
-            'first_name' => 'Jane',
-            'last_name' => 'Smith',
-            'email' => 'jane@example.com',
-            'date_of_birth' => '1992-03-25',
-            'allow_trume_login' => true,
-            'biological_sex' => 'Female',
-            'gender' => 'Female',
-            'country' => 'Canada',
-            'ethnicity' => 'Asian'
-        ],
-        (object) [
-            'id' => 36423218313201,
-            'first_name' => 'Jane',
-            'last_name' => 'Smith',
-            'email' => 'jane@example.com',
-            'date_of_birth' => '1992-03-25',
-            'allow_trume_login' => true,
-            'biological_sex' => 'Female',
-            'gender' => 'Female',
-            'country' => 'Canada',
-            'ethnicity' => 'Asian'
-        ],
-        (object) [
-            'id' => 36423218313201,
-            'first_name' => 'Jane',
-            'last_name' => 'Smith',
-            'email' => 'jane@example.com',
-            'date_of_birth' => '1992-03-25',
-            'allow_trume_login' => true,
-            'biological_sex' => 'Female',
-            'gender' => 'Female',
-            'country' => 'Canada',
-            'ethnicity' => 'Asian'
-        ],
-        (object) [
-            'id' => 36423218313201,
-            'first_name' => 'Jane',
-            'last_name' => 'Smith',
-            'email' => 'jane@example.com',
-            'date_of_birth' => '1992-03-25',
-            'allow_trume_login' => true,
-            'biological_sex' => 'Female',
-            'gender' => 'Female',
-            'country' => 'Canada',
-            'ethnicity' => 'Asian'
-        ],
-        (object) [
-            'id' => 36423218313201,
-            'first_name' => 'Jane',
-            'last_name' => 'Smith',
-            'email' => 'jane@example.com',
-            'date_of_birth' => '1992-03-25',
-            'allow_trume_login' => true,
-            'biological_sex' => 'Female',
-            'gender' => 'Female',
-            'country' => 'Canada',
-            'ethnicity' => 'Asian'
-        ],
-        (object) [
-            'id' => 36423218313201,
-            'first_name' => 'Jane',
-            'last_name' => 'Smith',
-            'email' => 'jane@example.com',
-            'date_of_birth' => '1992-03-25',
-            'allow_trume_login' => true,
-            'biological_sex' => 'Female',
-            'gender' => 'Female',
-            'country' => 'Canada',
-            'ethnicity' => 'Asian'
-        ],
-        (object) [
-            'id' => 36423218313201,
-            'first_name' => 'Jane',
-            'last_name' => 'Smith',
-            'email' => 'jane@example.com',
-            'date_of_birth' => '1992-03-25',
-            'allow_trume_login' => true,
-            'biological_sex' => 'Female',
-            'gender' => 'Female',
-            'country' => 'Canada',
-            'ethnicity' => 'Asian'
-        ],
-        (object) [
-            'id' => 36423218313201,
-            'first_name' => 'Jane',
-            'last_name' => 'Smith',
-            'email' => 'jane@example.com',
-            'date_of_birth' => '1992-03-25',
-            'allow_trume_login' => true,
-            'biological_sex' => 'Female',
-            'gender' => 'Female',
-            'country' => 'Canada',
-            'ethnicity' => 'Asian'
-        ],
-        (object) [
-            'id' => 36423218313201,
-            'first_name' => 'Jane',
-            'last_name' => 'Smith',
-            'email' => 'jane@example.com',
-            'date_of_birth' => '1992-03-25',
-            'allow_trume_login' => true,
-            'biological_sex' => 'Female',
-            'gender' => 'Female',
-            'country' => 'Canada',
-            'ethnicity' => 'Asian'
-        ]
     ]
 ])->name('users');
 
@@ -197,7 +89,7 @@ Route::view('/users', 'dashboard.users', [
 Route::get('/kits', function () {
     $registeredKits = [
         [
-            'barcode' => 'KIT123456',
+            'barcode' => 'KIT-4F2A9D8C7E6B1D3C8F2A9E6B7D4C1F8A3E9C2B7D1E6F3A9B6D2F7C4A8E',
             'user' => 'John Doe',
             'user_details' => [
                 'id' => "21974872103",
@@ -213,7 +105,199 @@ Route::get('/kits', function () {
             ]
         ],
         [
-            'barcode' => 'KIT654321',
+            'barcode' => 'KIT-3A9F8D7E6C5B2D1A4F7C3E8B9D2F1A6C5B7E3D9A8F2C1B4E7D6C3F1A9B',
+            'user' => 'Jane Doe',
+            'user_details' => [
+                'id' => "12389743210",
+                'first_name' => 'Jane',
+                'last_name' => 'Doe',
+                'email' => 'jane@example.com',
+                'gender' => 'Female',
+                'biological_sex' => 'Female',
+                'date_of_birth' => '1994-06-17',
+                'country' => 'United States',
+                'ethnicity' => 'White',
+                'allow_trume_login' => true,
+            ]
+        ],
+        [
+            'barcode' => 'KIT-4F2A9D8C7E6B1D3C8F2A9E6B7D4C1F8A3E9C2B7D1E6F3A9B6D2F7C4A8E',
+            'user' => 'John Doe',
+            'user_details' => [
+                'id' => "21974872103",
+                'first_name' => 'John',
+                'last_name' => 'Doe',
+                'email' => 'john@example.com',
+                'gender' => 'Male',
+                'biological_sex' => 'Male',
+                'date_of_birth' => '1994-06-17',
+                'country' => 'United States',
+                'ethnicity' => 'White',
+                'allow_trume_login' => true,
+            ]
+        ],
+        [
+            'barcode' => 'KIT-3A9F8D7E6C5B2D1A4F7C3E8B9D2F1A6C5B7E3D9A8F2C1B4E7D6C3F1A9B',
+            'user' => 'Jane Doe',
+            'user_details' => [
+                'id' => "12389743210",
+                'first_name' => 'Jane',
+                'last_name' => 'Doe',
+                'email' => 'jane@example.com',
+                'gender' => 'Female',
+                'biological_sex' => 'Female',
+                'date_of_birth' => '1994-06-17',
+                'country' => 'United States',
+                'ethnicity' => 'White',
+                'allow_trume_login' => true,
+            ]
+        ],
+        [
+            'barcode' => 'KIT-4F2A9D8C7E6B1D3C8F2A9E6B7D4C1F8A3E9C2B7D1E6F3A9B6D2F7C4A8E',
+            'user' => 'John Doe',
+            'user_details' => [
+                'id' => "21974872103",
+                'first_name' => 'John',
+                'last_name' => 'Doe',
+                'email' => 'john@example.com',
+                'gender' => 'Male',
+                'biological_sex' => 'Male',
+                'date_of_birth' => '1994-06-17',
+                'country' => 'United States',
+                'ethnicity' => 'White',
+                'allow_trume_login' => true,
+            ]
+        ],
+        [
+            'barcode' => 'KIT-3A9F8D7E6C5B2D1A4F7C3E8B9D2F1A6C5B7E3D9A8F2C1B4E7D6C3F1A9B',
+            'user' => 'Jane Doe',
+            'user_details' => [
+                'id' => "12389743210",
+                'first_name' => 'Jane',
+                'last_name' => 'Doe',
+                'email' => 'jane@example.com',
+                'gender' => 'Female',
+                'biological_sex' => 'Female',
+                'date_of_birth' => '1994-06-17',
+                'country' => 'United States',
+                'ethnicity' => 'White',
+                'allow_trume_login' => true,
+            ]
+        ],
+        [
+            'barcode' => 'KIT-4F2A9D8C7E6B1D3C8F2A9E6B7D4C1F8A3E9C2B7D1E6F3A9B6D2F7C4A8E',
+            'user' => 'John Doe',
+            'user_details' => [
+                'id' => "21974872103",
+                'first_name' => 'John',
+                'last_name' => 'Doe',
+                'email' => 'john@example.com',
+                'gender' => 'Male',
+                'biological_sex' => 'Male',
+                'date_of_birth' => '1994-06-17',
+                'country' => 'United States',
+                'ethnicity' => 'White',
+                'allow_trume_login' => true,
+            ]
+        ],
+        [
+            'barcode' => 'KIT-3A9F8D7E6C5B2D1A4F7C3E8B9D2F1A6C5B7E3D9A8F2C1B4E7D6C3F1A9B',
+            'user' => 'Jane Doe',
+            'user_details' => [
+                'id' => "12389743210",
+                'first_name' => 'Jane',
+                'last_name' => 'Doe',
+                'email' => 'jane@example.com',
+                'gender' => 'Female',
+                'biological_sex' => 'Female',
+                'date_of_birth' => '1994-06-17',
+                'country' => 'United States',
+                'ethnicity' => 'White',
+                'allow_trume_login' => true,
+            ]
+        ],
+        [
+            'barcode' => 'KIT-4F2A9D8C7E6B1D3C8F2A9E6B7D4C1F8A3E9C2B7D1E6F3A9B6D2F7C4A8E',
+            'user' => 'John Doe',
+            'user_details' => [
+                'id' => "21974872103",
+                'first_name' => 'John',
+                'last_name' => 'Doe',
+                'email' => 'john@example.com',
+                'gender' => 'Male',
+                'biological_sex' => 'Male',
+                'date_of_birth' => '1994-06-17',
+                'country' => 'United States',
+                'ethnicity' => 'White',
+                'allow_trume_login' => true,
+            ]
+        ],
+        [
+            'barcode' => 'KIT-3A9F8D7E6C5B2D1A4F7C3E8B9D2F1A6C5B7E3D9A8F2C1B4E7D6C3F1A9B',
+            'user' => 'Jane Doe',
+            'user_details' => [
+                'id' => "12389743210",
+                'first_name' => 'Jane',
+                'last_name' => 'Doe',
+                'email' => 'jane@example.com',
+                'gender' => 'Female',
+                'biological_sex' => 'Female',
+                'date_of_birth' => '1994-06-17',
+                'country' => 'United States',
+                'ethnicity' => 'White',
+                'allow_trume_login' => true,
+            ]
+        ],
+        [
+            'barcode' => 'KIT-4F2A9D8C7E6B1D3C8F2A9E6B7D4C1F8A3E9C2B7D1E6F3A9B6D2F7C4A8E',
+            'user' => 'John Doe',
+            'user_details' => [
+                'id' => "21974872103",
+                'first_name' => 'John',
+                'last_name' => 'Doe',
+                'email' => 'john@example.com',
+                'gender' => 'Male',
+                'biological_sex' => 'Male',
+                'date_of_birth' => '1994-06-17',
+                'country' => 'United States',
+                'ethnicity' => 'White',
+                'allow_trume_login' => true,
+            ]
+        ],
+        [
+            'barcode' => 'KIT-3A9F8D7E6C5B2D1A4F7C3E8B9D2F1A6C5B7E3D9A8F2C1B4E7D6C3F1A9B',
+            'user' => 'Jane Doe',
+            'user_details' => [
+                'id' => "12389743210",
+                'first_name' => 'Jane',
+                'last_name' => 'Doe',
+                'email' => 'jane@example.com',
+                'gender' => 'Female',
+                'biological_sex' => 'Female',
+                'date_of_birth' => '1994-06-17',
+                'country' => 'United States',
+                'ethnicity' => 'White',
+                'allow_trume_login' => true,
+            ]
+        ],
+        [
+            'barcode' => 'KIT-4F2A9D8C7E6B1D3C8F2A9E6B7D4C1F8A3E9C2B7D1E6F3A9B6D2F7C4A8E',
+            'user' => 'John Doe',
+            'user_details' => [
+                'id' => "21974872103",
+                'first_name' => 'John',
+                'last_name' => 'Doe',
+                'email' => 'john@example.com',
+                'gender' => 'Male',
+                'biological_sex' => 'Male',
+                'date_of_birth' => '1994-06-17',
+                'country' => 'United States',
+                'ethnicity' => 'White',
+                'allow_trume_login' => true,
+            ]
+        ],
+        [
+            'barcode' => 'KIT-3A9F8D7E6C5B2D1A4F7C3E8B9D2F1A6C5B7E3D9A8F2C1B4E7D6C3F1A9B',
             'user' => 'Jane Doe',
             'user_details' => [
                 'id' => "12389743210",

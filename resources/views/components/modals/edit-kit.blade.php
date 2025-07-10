@@ -11,7 +11,7 @@
 
     <div x-show="open" class="fixed inset-0 flex items-center justify-center bg-black/40 z-50" x-cloak>
         <div class="bg-white rounded-lg shadow-lg w-full max-w-xl p-6 relative">
-            <h2 class="text-xl font-bold mb-4">Edit Kit - {{ $kit['barcode'] }}</h2>
+            <h2 class="text-xl font-bold mb-4">Edit Kit</h2>
 
             <form method="POST" action="#">
                 @csrf
