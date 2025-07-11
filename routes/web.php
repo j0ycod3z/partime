@@ -397,3 +397,27 @@ Route::get('/kits', function () {
 
     return view('dashboard.kits', compact('registeredKits', 'unregisteredKits', 'results'));
 })->name('kits');
+
+
+Route::post('/settings/generate-kit', function (\Illuminate\Http\Request $request) {
+    Http::withHeaders([
+        'App-Key' => '1234',
+        'Content-Type' => 'application/json',
+    ])->post('http://localhost:8080/v1/generate-kits', [
+                'barcode' => $request->barcode,
+                'test_type' => (int) $request->test_type,
+            ]);
+
+    return back()->with('success', 'Test kit generated.');
+})->name('settings.generate-kit');
+
+Route::post('/settings/mock-kit', function (\Illuminate\Http\Request $request) {
+    Http::withHeaders([
+        'App-Key' => '1234',
+        'Content-Type' => 'application/json',
+    ])->post('http://localhost:8080/v1/mock-kit-result', [
+                'barcode' => $request->barcode,
+            ]);
+
+    return back()->with('success', 'Mock kit result triggered.');
+})->name('settings.mock-kit');
