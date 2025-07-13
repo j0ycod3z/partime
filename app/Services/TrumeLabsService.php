@@ -9,12 +9,13 @@ class TrumeLabsService
 {
     protected $baseUrl;
     protected $apiKey;
-
+    protected $appKey;
+    
     public function __construct()
     {
         $this->baseUrl = config('services.trumelabs.base_url');
         $this->apiKey  = config('services.trumelabs.api_key');  // Bearer Token
-        $this->appKey  = config('services.trumelabs.app_key');  // "App-Key" header
+        $this->appKey  = config('services.trumelabs.app_key');  
     }
 
     protected function request($method, $endpoint, $data = [], $query = [])
@@ -22,7 +23,9 @@ class TrumeLabsService
         $url = $this->baseUrl . $endpoint;
 
         $http = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $this->apiKey,
             'App-Key' => $this->apiKey,
+            'Accept' => 'application/json',
             'Content-Type' => 'application/json',
         ]);
 

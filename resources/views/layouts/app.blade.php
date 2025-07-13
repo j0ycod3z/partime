@@ -9,7 +9,9 @@
 
 <body class="bg-gray-100 flex">
     <aside class="w-64 bg-white h-screen shadow-md flex flex-col">
-        <div class="p-6 font-bold text-xl text-gray-600">AETERNUM</div>
+        <div class="p-6 text-xl text-gray-600" style="font-family: 'Yaro-Black'">
+            <span class="">aeternum</span>
+        </div>
         <div class="flex-1 flex flex-col justify-between">
             <nav class="space-y-2 px-4">
                 <a href="{{ route('dashboard') }}"
@@ -58,9 +60,8 @@
 
     </aside>
 
-
     {{-- Main content --}}
-    <main class="flex-1 p-8">
+    <main class="flex-1 h-screen">
         @yield('content')
     </main>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>

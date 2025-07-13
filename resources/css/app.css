@@ -4,3 +4,10 @@
 [x-cloak] {
     display: none !important;
 }
+
+@font-face {
+    font-family: 'Yaro-Black';
+    src: url('../../public/fonts/yaro-black.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
