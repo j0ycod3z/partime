@@ -65,28 +65,46 @@ class TrumeLabsController extends Controller
         return redirect()->back()->with('success', 'User updated successfully.');
     }
     
-
     public function getUser(Request $request)
     {
-        $id = $request->query('id');
-        $email = $request->query('email');
+        $id = trim($request->query('id'));
+        $email = trim($request->query('email'));
 
         if (!$id && !$email) {
-            return response()->json(['error' => 'You must provide either id or email.'], 422);
+            return response()->json(['error' => 'You must provide either an ID or email.'], 422);
         }
 
-        $user = $this->trumeLabs->getUser(compact('id', 'email'));
+        // Optional: input validation
+        if ($id && !is_numeric($id)) {
+            return response()->json(['error' => 'Invalid ID format.'], 422);
+        }
 
-        return response()->json($user);
+        if ($email && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return response()->json(['error' => 'Invalid email format.'], 422);
+        }
+
+        try {
+            $user = $this->trumeLabs->getUser(compact('id', 'email'));
+
+            if (!$user || isset($user['error'])) {
+                return response()->json(['error' => $user['error'] ?? 'User not found.'], 404);
+            }
+
+            return response()->json($user);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'An error occurred: ' . $e->getMessage()], 500);
+        }
     }
-        
 
     public function getUnregisteredKits()
     {
         return response()->json($this->trumeLabs->getUnregisteredKits());
     }
     
-
+    public function getUserFromApi($query)
+    {
+        return $this->trumeLabs->getUser($query); // This calls the TrumeLabsService logic
+    }
     public function registerKit($barcode, Request $request)
     {
         return response()->json($this->trumeLabs->registerKit($barcode, $request->all()));

@@ -3,7 +3,7 @@
 @section('content')
     <div class="p-8 h-screen flex flex-col overflow-hidden">
         <div class="flex justify-center items-center gap-4 mb-8">
-            <form method="GET" action="{{ route('users') }}" class="flex-grow">
+            <form method="GET" action="{{ route('users.show') }}" class="flex-grow">
                 <div class="relative">
                     <input type="text" name="query" placeholder="Search by ID or Email"
                         class="w-full px-5 py-3 rounded-full shadow focus:outline-none focus:ring-2 focus:ring-blue-500 border border-gray-300"
@@ -33,7 +33,7 @@
                     <div
                         class="relative group bg-white border border-gray-200 hover:shadow-lg hover:border-gray-400 rounded-lg px-6 py-4 transition duration-200 hover:bg-gray-50">
                         <!-- Dropdown -->
-                        <div class="absolute top-4 right-4">
+                        {{-- <div class="absolute top-4 right-4">
                             <div class="relative">
                                 <button
                                     onclick="document.getElementById('menu-{{ $user->id }}').classList.toggle('hidden')"
@@ -51,25 +51,27 @@
                                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">Edit</button>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <!-- User Details -->
-                        <a href="#"
-                            onclick="document.getElementById('view-modal-{{ $user->id }}').classList.remove('hidden')">
+                        <span class="cursor-default"> 
                             <div class="font-bold text-lg text-gray-800 group-hover:text-black">{{ $user->email }}</div>
                             <div class="font-semibold text-sm text-gray-600 group-hover:text-gray-700">ID:
                                 {{ $user->id }}</div>
                             <div class="text-sm text-gray-500">{{ $user->first_name }} {{ $user->last_name }} -
                                 {{ $user->country }} - {{ $user->gender }}</div>
-                        </a>
+                            </span>
 
-                        {{-- <!-- View Modal -->
-                        @include('components.modals.view-user', ['user' => $user])
+                            <div class="flex flex-row mt-4 gap-4">
+  <!-- View Modal -->
+                                @include('components.modals.view-user', ['user' => $user])
 
-                        <!-- Edit Modal -->
-                        @if ($globalRole === 'admin')
-                            @include('components.modals.edit-user', ['user' => $user])
-                        @endif --}}
+                                <!-- Edit Modal -->
+                                @if ($globalRole === 'admin')
+                                    @include('components.modals.edit-user', ['user' => $user])
+                                @endif
+                            </div>
+
                     </div>
                 @empty
                     <div class="text-center text-gray-400">No results found.</div>

@@ -117,14 +117,15 @@ Route::get('/users/{id}', function ($id) {
 })->name('users.show.web'); // optional alternative name
 
 
-Route::get('/users/{id}', function ($id) {
-    $controller = app(TrumeLabsController::class);
-    $user = $controller->showUser($id);
 
-    return view('users.show', compact('user'));
-})->name('users.show.web');
+// Route::get('/get-user/{id}', function ($id) {
+//     $controller = app(App\Http\Controllers\TrumeLabsController::class);
+//     return response()->json($controller->getUserFromApi(['id' => $id]));
+// });
+
 
 Route::get('/kits', function () {
+    $kitQuery = request('kit_query');
     // Fetch unregistered kits from TrumeLabs API
     $controller = app(TrumeLabsController::class);
     $unregisteredKitsResponse = $controller->getUnregisteredKits();
@@ -232,7 +233,7 @@ Route::get('/kits', function () {
         ]
     ];
 
-    return view('dashboard.kits', compact('registeredKits', 'unregisteredKits', 'results'))
+    return view('dashboard.kits', compact('registeredKits', 'unregisteredKits', 'results', 'kitQuery'))
         ->with('globalRole', 'admin');
 })->name('kits');
 
