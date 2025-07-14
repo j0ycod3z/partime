@@ -8,7 +8,7 @@
 </head>
 
 <body class="bg-gray-100 flex">
-    <aside class="w-64 bg-white h-screen shadow-md flex flex-col">
+    {{-- <aside class="w-64 bg-white h-screen shadow-md flex flex-col">
         <div class="p-6 text-xl text-gray-600" style="font-family: 'Yaro-Black'">
             <span class="">aeternum</span>
         </div>
@@ -58,7 +58,7 @@
             </div>
         </div>
 
-    </aside>
+    </aside> --}}
 
     {{-- Main content --}}
     <main class="flex-1 h-screen">
