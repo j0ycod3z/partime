@@ -12,7 +12,50 @@ use Illuminate\Http\Request;
 */
 
 // Route::get('/', fn() => view('auth.login'))->name('login');
+
+$kits = [
+    [
+        'id' => 'user123',
+        'email' => 'john@example.com',
+        'bio_age_results' => [
+            [
+                'kit_barcode' => 'KIT12345',
+                'chronological_age' => 30,
+                'biological_age' => 28,
+                'peer_biological_age_score' => 92,
+                'collection_date' => now(),
+                'share_link' => 'https://example.com/results/123'
+            ]
+        ],
+        'genetic_results' => [
+            [
+                'kit_barcode' => 'KIT12345',
+                'markers' => [
+                    ['marker' => 'rs123', 'risk' => 'High', 'gene' => 'BRCA1', 'position' => '17q21.31'],
+                ]
+            ]
+        ]
+    ],
+    [
+        'id' => 'user456',
+        'email' => 'jane@example.com',
+        'bio_age_results' => [],
+        'genetic_results' => []
+    ]
+];
+
+// Search route
+Route::get('/kit-search', function (Illuminate\Http\Request $request) use ($kits) {
+    $query = $request->get('q');
+    $result = collect($kits)->first(fn($kit) => $kit['id'] === $query || $kit['email'] === $query);
+
+    return view('dashboard.kit-search', ['results' => $result]);
+})->name('kit.search');
 Route::view('/', 'dashboard.index-dashboard')->name('index-dashboard');
+
+
+
+
 Route::view('/register', 'auth.register')->name('register');
 Route::view('/settings', 'dashboard.settings')->name('settings');
 Route::view('/dashboard', 'dashboard.index')->name('dashboard');

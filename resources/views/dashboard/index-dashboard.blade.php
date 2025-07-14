@@ -11,7 +11,7 @@
             </p>
         </div>
         <!-- Search form -->
-        <form id="search-form" action="" method="GET" class="w-full max-w-xl">
+        <form id="search-form" action="{{ route('kit.search') }}" method="GET" class="w-full max-w-xl">
             <div
                 class="flex items-center bg-white border border-gray-300 rounded-full shadow focus-within:border-gray-500 focus-within:shadow-md transition px-4 py-2">
                 <x-heroicon-o-beaker class="h-5 text-gray-500" />
