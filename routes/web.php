@@ -11,7 +11,8 @@ use Illuminate\Http\Request;
 | These routes return frontend views or static test data for display.
 */
 
-Route::get('/', fn() => view('auth.login'))->name('login');
+// Route::get('/', fn() => view('auth.login'))->name('login');
+Route::view('/', 'dashboard.index-dashboard')->name('index-dashboard');
 Route::view('/register', 'auth.register')->name('register');
 Route::view('/settings', 'dashboard.settings')->name('settings');
 Route::view('/dashboard', 'dashboard.index')->name('dashboard');
@@ -124,7 +125,10 @@ Route::get('/users/{id}', function ($id) {
     return view('users.show', compact('user'));
 })->name('users.show.web');
 
+
+
 Route::get('/kits', function () {
+    $kitQuery = request('kit_query');
     // Fetch unregistered kits from TrumeLabs API
     $controller = app(TrumeLabsController::class);
     $unregisteredKitsResponse = $controller->getUnregisteredKits();
@@ -232,14 +236,9 @@ Route::get('/kits', function () {
         ]
     ];
 
-    return view('dashboard.kits', compact('registeredKits', 'unregisteredKits', 'results'))
+    return view('dashboard.kits', compact('registeredKits', 'unregisteredKits', 'results', 'kitQuery'))
         ->with('globalRole', 'admin');
 })->name('kits');
-
-
-
-
-
 
 
 Route::post('/settings/generate-kit', function (\Illuminate\Http\Request $request) {
