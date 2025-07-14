@@ -13,17 +13,16 @@ Route::prefix('trumelabs')->group(function () {
 
     Route::get('/get-user', [TrumeLabsController::class, 'getUser'])->name('users.show');
 
-
     // KITS
     Route::get('/unregistered-kits', [TrumeLabsController::class, 'getUnregisteredKits']);
 
-    
+
     Route::post('/kits/{barcode}/register', [TrumeLabsController::class, 'registerKit']); // TO DO MAY AAYUSIN PA
     Route::patch('/kits/{barcode}', [TrumeLabsController::class, 'updateKit']); // TO DO MAY AAYUSIN PA
 
 
     // RESULTS
-    Route::get('/results', [TrumeLabsController::class, 'getResults']);//questionable
+    Route::get('/results', [TrumeLabsController::class, 'mockKitResult']);
 
     // STAGING ONLY (DEV/TESTING)
     Route::post('/generate-kits', [TrumeLabsController::class, 'generateKit']);
