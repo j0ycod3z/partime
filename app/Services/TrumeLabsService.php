@@ -39,8 +39,13 @@ class TrumeLabsService
     }
 
     public function createUser($data)         { return $this->request('post', '/v1/user', $data); }
-    public function updateUser($id, $data)    { return $this->request('patch', "/v1/user/{$id}", $data); }
-    public function getUser($query)           { return $this->request('get', '/v1/user', [], $query); }
+    public function updateUser($id, $data)    { 
+        Log::info("Calling TrumeLabs PATCH /v1/user/{$id}", $data);
+        return $this->request('patch', "/v1/user/{$id}", $data); }
+    public function getUser(array $query)
+{
+    return $this->request('get', '/v1/user', $query); // will convert to /v1/user?id=... or /v1/user?email=...
+}
 
     public function getUnregisteredKits()     { return $this->request('get', '/v1/unregistered-kits'); }
     public function registerKit($barcode, $data) { return $this->request('post', "/v1/kits/{$barcode}/register", $data); }
