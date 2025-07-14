@@ -134,10 +134,8 @@ class TrumeLabsController extends Controller
 
         if (filter_var($q, FILTER_VALIDATE_EMAIL)) {
             $query['email'] = $q;
-        } elseif (is_numeric($q)) {
-            $query['id'] = $q;
         } else {
-            $query['kit_barcode'] = $q;
+            $query['id'] = $q;
         }
         \Log::debug('Request query all:', $request->query());
 
@@ -146,7 +144,8 @@ class TrumeLabsController extends Controller
         // Call the service method
         $results = $this->trumeLabs->mockKitResult($query);
 
-        \Log::info('Kit search results:', $results->toArray());
+        \Log::info('Kit search results:', $results); // works for arrays too
+
 
         return response()->json([
             'status' => 'success',

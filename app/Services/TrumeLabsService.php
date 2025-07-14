@@ -52,19 +52,11 @@ class TrumeLabsService
     public function updateKit($barcode, $data)   { return $this->request('patch', "/v1/kits/{$barcode}", $data); }
 
     public function mockKitResult(array $query = [])
-{
-    // Example static data
-    $kits = config('trumelabs.mock_kits'); // or use hardcoded array if not from config
+    {
+        // Call real TrumeLabs API endpoint
+        return $this->request('get', '/v1/results', [], $query);
+    }
 
-    // Match all kits that match any of the criteria
-    $results = collect($kits)->filter(function ($kit) use ($query) {
-        return ($query['id'] ?? null) === $kit['id'] ||
-               ($query['email'] ?? null) === $kit['email'] ||
-               collect($kit['bio_age_results'])->pluck('kit_barcode')->contains($query['kit_barcode'] ?? '');
-    });
-
-    return $results->values(); // reset keys
-}
 
     public function generateKit($data)        { return $this->request('post', '/v1/generate-kits', $data); }
     // public function mockKitResult($data)      { return $this->request('post', '/v1/mock-kit-result', $data); }
