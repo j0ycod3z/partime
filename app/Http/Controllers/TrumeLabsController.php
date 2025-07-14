@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\TrumeLabsService;
-
+use Illuminate\Support\Facades\Log;
 
 class TrumeLabsController extends Controller
 {
@@ -37,8 +37,14 @@ class TrumeLabsController extends Controller
         // Redirect or show response
         return redirect()->back()->with('success', 'User created successfully.');
     }
-    public function updateUser($id, Request $request)
+    public function updateUser(Request $request, $id)
     {
+        if (!$id) {
+            abort(400, 'Missing user ID.');
+        }
+    
+        Log::debug('Updating user ID:', ['id' => $id]);
+
         $validated = $request->validate([
             'first_name'         => 'required|string',
             'last_name'          => 'required|string',
@@ -60,17 +66,26 @@ class TrumeLabsController extends Controller
     }
     
 
-    public function showUser($id)
+    public function getUser(Request $request)
     {
-        $user = $this->trumeLabs->getUser(['id' => $id]);
-        return view('dashboard.view-user', compact('user'));
+        $id = $request->query('id');
+        $email = $request->query('email');
+
+        if (!$id && !$email) {
+            return response()->json(['error' => 'You must provide either id or email.'], 422);
+        }
+
+        $user = $this->trumeLabs->getUser(compact('id', 'email'));
+
+        return response()->json($user);
     }
-    
+        
 
     public function getUnregisteredKits()
     {
         return response()->json($this->trumeLabs->getUnregisteredKits());
     }
+    
 
     public function registerKit($barcode, Request $request)
     {
