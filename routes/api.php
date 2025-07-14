@@ -3,27 +3,25 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TrumeLabsController;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-| These routes handle backend logic such as creating users, registering kits, etc.
-| Frontend JavaScript should make API calls to /api/trumelabs/*
-*/
+
 
 Route::prefix('trumelabs')->group(function () {
     // USER
-    Route::post('/user', [TrumeLabsController::class, 'createUser']);
-    Route::patch('/user/{id}', [TrumeLabsController::class, 'updateUser']);
-    Route::get('/user', [TrumeLabsController::class, 'getUser']);
+    Route::post('/user', [TrumeLabsController::class, 'createUser'])->name('users.store');//
+
+    Route::patch('/patch-user/{id}', [TrumeLabsController::class, 'updateUser'])->name('users.update');//
+    Route::get('/get-user', [TrumeLabsController::class, 'getUser'])->name('users.show');//
 
     // KITS
-    Route::get('/unregistered-kits', [TrumeLabsController::class, 'getUnregisteredKits']);
-    Route::post('/kits/{barcode}/register', [TrumeLabsController::class, 'registerKit']);
-    Route::patch('/kits/{barcode}', [TrumeLabsController::class, 'updateKit']);
+    Route::get('/unregistered-kits', [TrumeLabsController::class, 'getUnregisteredKits']);/////
+    Route::post('/kits/{barcode}/register', [TrumeLabsController::class, 'registerKit']); // TO DO MAY AAYUSIN PA
+    Route::patch('/kits/{barcode}', [TrumeLabsController::class, 'updateKit']); // TO DO MAY AAYUSIN PA
 
     // RESULTS
-    Route::get('/results', [TrumeLabsController::class, 'getResults']);
+    Route::get('/results', [TrumeLabsController::class, 'getResults']);//questionable
+
+
+
 
     // STAGING ONLY (DEV/TESTING)
     Route::post('/generate-kits', [TrumeLabsController::class, 'generateKit']);
